@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PersonnageScript
+public class Character
 {
     public string Nom;
     public EGenre Genre;
@@ -16,35 +16,35 @@ public class PersonnageScript
     public Carac Force;
     public Carac Intel;
     public Carac Agi;
-    public Carac Charisme;
+    public Carac Cha;
     public Carac Cc;
     public Carac Ct;
-    public Carac Pa;
-    public Carac Vitesse;
+    public Carac Vit;
     public Carac ResiP;
     public Carac ResiM;
 
     public CaracConso Pv;
     public CaracConso Mana;
     public CaracConso Xp;
+    public CaracConso Pa;
 
     public List<Item> Inventaire;
     public List<Competence> Competences;
-    public List<PersonnageScript> Familiers;
+    public List<Character> Familiers;
 
     public string ImageEmplacement;
 
-    public PersonnageScript()
+    public Character()
     {
 
     }
 
-    public PersonnageScript(string pNom, EGenre pGenre, int pAge, Race pEspece, Classe pMetier, string pImageEmplacement)
+    public Character(string pNom, EGenre pGenre, int pAge, Race pEspece, Classe pMetier, string pImageEmplacement)
     {
         Nom = pNom;
         Genre = pGenre;
         Age = pAge;
-        Lvl = 0;
+        Lvl = 1;
         Argent = 0;
 
         Espece = pEspece;
@@ -54,7 +54,7 @@ public class PersonnageScript
 
         Inventaire = new List<Item>();
         Competences = new List<Competence>();
-        Familiers = new List<PersonnageScript>();
+        Familiers = new List<Character>();
 
         ImageEmplacement = pImageEmplacement;
 
@@ -62,7 +62,7 @@ public class PersonnageScript
         Metier.ApplicationCarac(this);
     }
 
-    public PersonnageScript(PersonnageScript pPersonnageScript)
+    public Character(Character pPersonnageScript)
     {
         Nom = pPersonnageScript.Nom;
         Genre = pPersonnageScript.Genre;
@@ -84,11 +84,11 @@ public class PersonnageScript
         Force = pPersonnageScript.Force;
         Intel = pPersonnageScript.Intel;
         Agi = pPersonnageScript.Agi;
-        Charisme = pPersonnageScript.Charisme;
+        Cha = pPersonnageScript.Cha;
         Cc = pPersonnageScript.Cc;
         Ct = pPersonnageScript.Ct;
         Pa = pPersonnageScript.Pa;
-        Vitesse = pPersonnageScript.Vitesse;
+        Vit = pPersonnageScript.Vit;
         ResiP = pPersonnageScript.ResiP;
         ResiM = pPersonnageScript.ResiM;
 

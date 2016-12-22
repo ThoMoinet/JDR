@@ -4,30 +4,37 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    public float MaxValue;
-    public float MinValue;
-
+    private float _maxValue;
+    private float _minValue;
     private float _currentValue;
+    private bool _initialised;
     private float _size;
     private RectTransform _rectTransformBar;
-
+    
     void Awake()
     {
         _size = GetComponent<RectTransform>().rect.size.x;
         _rectTransformBar = transform.FindChild("Bar").GetComponent<RectTransform>();
     }
 
-    //// Use this for initialization
-    //void Start()
-    //{
-        
-    //}
+    void Start()
+    {
+        _initialised = false;
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    /// <summary>
+    /// Permet de définir toutes les propriétés de la progresse bar
+    /// </summary>
+    /// <param name="maxValue">Valeur Max</param>
+    /// <param name="minValue">Valeur Min</param>
+    /// <param name="currentValue">Valeur actuel</param>
+    public void SetValues(float maxValue, float minValue, float currentValue)
+    {
+        _maxValue = maxValue;
+        _minValue = minValue;
+        _initialised = true;
+        ChangeValue(currentValue);
+    }
 
     /// <summary>
     /// Permet de changer la valeur et d'ajuster le visuel
@@ -35,23 +42,31 @@ public class ProgressBar : MonoBehaviour
     /// <param name="newValue">Nouvelle valeur</param>
     public void ChangeValue(float newValue)
     {
-        float newSize;
+        if (_initialised)
+        {
+            float newSize;
 
-        if (newValue < MinValue)
-        {
-            _currentValue = MinValue;
-        }
-        else if (newValue > MaxValue)
-        {
-            _currentValue = MaxValue;
+            //Controle des limites
+            if (newValue < _minValue)
+            {
+                _currentValue = _minValue;
+            }
+            else if (newValue > _maxValue)
+            {
+                _currentValue = _maxValue;
+            }
+            else
+            {
+                _currentValue = newValue;
+            }
+
+            newSize = _size * (_currentValue / _maxValue);
+
+            _rectTransformBar.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, newSize);
         }
         else
         {
-            _currentValue = newValue;
+            Debug.LogError("");
         }
-
-        newSize = _size * (_currentValue / MaxValue);
-
-        _rectTransformBar.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, newSize);
     }
 }

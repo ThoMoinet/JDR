@@ -53,20 +53,20 @@ public class Race
         Mana = pRace.Mana;
     }
     
-    public void ApplicationCarac(PersonnageScript pPerso)
+    public void ApplicationCarac(Character pPerso)
     {
         pPerso.Force = new Carac(Force.LanceFloat());
         pPerso.Intel = new Carac(Intel.LanceFloat());
         pPerso.Agi = new Carac(Agi.LanceFloat());
-        pPerso.Charisme = new Carac(Charisme.LanceFloat());
+        pPerso.Cha = new Carac(Charisme.LanceFloat());
         pPerso.Cc = new Carac(Cc.LanceFloat());
         pPerso.Ct = new Carac(Ct.LanceFloat());
-        pPerso.Pa = new Carac(Pa.LanceFloat());
-        pPerso.Vitesse = new Carac(Vitesse.LanceFloat());
+        pPerso.Vit = new Carac(Vitesse.LanceFloat());
         pPerso.ResiP = new Carac(ResiP.LanceFloat());
         pPerso.ResiM = new Carac(ResiM.LanceFloat());
 
         pPerso.Pv = new CaracConso(Pv.LanceFloat());
         pPerso.Mana = new CaracConso(Mana.LanceFloat());
+        pPerso.Pa = new CaracConso(Pa.LanceFloat());
     }
 }

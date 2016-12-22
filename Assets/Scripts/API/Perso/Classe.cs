@@ -77,20 +77,20 @@ public class Classe
     /// Méthode utilisée pour la création d'un nouveau personnage. Elle applique les modifications de la classe au personnage
     /// </summary>
     /// <param name="pPerso">Personnage à modifier</param>
-    public void ApplicationCarac(PersonnageScript pPerso)
+    public void ApplicationCarac(Character pPerso)
     {
         pPerso.Force = new Carac(pPerso.Force.Valeur + ModifForce);
         pPerso.Intel = new Carac(pPerso.Intel.Valeur + ModifIntel);
         pPerso.Agi = new Carac(pPerso.Agi.Valeur + ModifAgi);
-        pPerso.Charisme = new Carac(pPerso.Charisme.Valeur + ModifCharisme);
+        pPerso.Cha = new Carac(pPerso.Cha.Valeur + ModifCharisme);
         pPerso.Cc = new Carac(pPerso.Cc.Valeur + ModifCc);
         pPerso.Ct = new Carac(pPerso.Ct.Valeur + ModifCt);
-        pPerso.Pa = new Carac(pPerso.Pa.Valeur + ModifPa);
-        pPerso.Vitesse = new Carac(pPerso.Vitesse.Valeur + ModifVitesse);
+        pPerso.Vit = new Carac(pPerso.Vit.Valeur + ModifVitesse);
         pPerso.ResiP = new Carac(pPerso.ResiP.Valeur + ModifResiP);
         pPerso.ResiM = new Carac(pPerso.ResiM.Valeur + ModifResiM);
 
         pPerso.Pv = new CaracConso(pPerso.Pv.Valeur + ModifPv);
         pPerso.Mana = new CaracConso(pPerso.Mana.Valeur + ModifMana);
+        pPerso.Pa = new CaracConso(pPerso.Pa.Valeur + ModifPa);
     }
 }
