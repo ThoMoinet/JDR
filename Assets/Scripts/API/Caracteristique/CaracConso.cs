@@ -27,4 +27,14 @@ public class CaracConso : Carac {
         }
     }
 
+    /// <summary>
+    /// Change les valeurs usuelles mais également la valeur utilisée pour la réinitialisation
+    /// </summary>
+    /// <param name="value"></param>
+    public override void ValueChange(float value)
+    {
+        base.ValueChange(value);
+
+        ValeurActu += value - ValeurActu;
+    }
 }

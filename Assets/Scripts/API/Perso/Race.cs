@@ -1,72 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Race
 {
-    public string Nom;
+    public string Name;
 
-    public Aleatoire Force;
-    public Aleatoire Intel;
-    public Aleatoire Agi;
-    public Aleatoire Charisme;
-    public Aleatoire Cc;
-    public Aleatoire Ct;
-    public Aleatoire Pa;
-    public Aleatoire Vitesse;
-    public Aleatoire ResiP;
-    public Aleatoire ResiM;
-    public Aleatoire Pv;
-    public Aleatoire Mana;
+    private Rand[] _charac;
 
-    public Race(string pNom, Aleatoire pForce, Aleatoire pIntel, Aleatoire pAgi, Aleatoire pCharisme, Aleatoire pCc, Aleatoire pCt,
-        Aleatoire pPa, Aleatoire pVitesse, Aleatoire pResiP, Aleatoire pResiM, Aleatoire pPv, Aleatoire pMana)
+    public Race(string pNom, RandomBuilder pBuilder)
     {
-        Nom = pNom;
-        Force = pForce;
-        Intel = pIntel;
-        Agi = pAgi;
-        Charisme = pCharisme;
-        Cc = pCc;
-        Ct = pCt;
-        Pa = pPa;
-        Vitesse = pVitesse;
-        ResiP = pResiP;
-        ResiM = pResiM;
-        Pv = pPv;
-        Mana = pMana;
+        Name = pNom;
+
+        _charac = pBuilder.GetValues;
     }
 
     public Race(Race pRace)
     {
-        Nom = pRace.Nom;
-        Force = pRace.Force;
-        Intel = pRace.Intel;
-        Agi = pRace.Agi;
-        Charisme = pRace.Charisme;
-        Cc = pRace.Cc;
-        Ct = pRace.Ct;
-        Pa = pRace.Pa;
-        Vitesse = pRace.Vitesse;
-        ResiP = pRace.ResiP;
-        ResiM = pRace.ResiM;
-        Pv = pRace.Pv;
-        Mana = pRace.Mana;
-    }
-    
-    public void ApplicationCarac(Character pPerso)
-    {
-        pPerso.Force = new Carac(Force.LanceFloat());
-        pPerso.Intel = new Carac(Intel.LanceFloat());
-        pPerso.Agi = new Carac(Agi.LanceFloat());
-        pPerso.Cha = new Carac(Charisme.LanceFloat());
-        pPerso.Cc = new Carac(Cc.LanceFloat());
-        pPerso.Ct = new Carac(Ct.LanceFloat());
-        pPerso.Vit = new Carac(Vitesse.LanceFloat());
-        pPerso.ResiP = new Carac(ResiP.LanceFloat());
-        pPerso.ResiM = new Carac(ResiM.LanceFloat());
+        Name = pRace.Name;
 
-        pPerso.Pv = new CaracConso(Pv.LanceFloat());
-        pPerso.Mana = new CaracConso(Mana.LanceFloat());
-        pPerso.Pa = new CaracConso(Pa.LanceFloat());
+        for (int i = 0; i < Statistic.NbStatistique; i++)
+        {
+            _charac[i] = pRace._charac[i];
+        }
+    }
+
+    public void ApplicationCharac(Character pPerso)
+    {
+        for (int i = 0; i < Statistic.NbStatistique; i++)
+        {
+            pPerso.Charac[i] = new Characteristic(_charac[i].Generate(true));
+        }
+
+        pPerso.Charac[(int)Statistic.EStat.Hp] = new CharacteristicConsumable(_charac[(int)Statistic.EStat.Hp].Generate(true));
+        pPerso.Charac[(int)Statistic.EStat.Mana] = new CharacteristicConsumable(_charac[(int)Statistic.EStat.Mana].Generate(true));
+        pPerso.Charac[(int)Statistic.EStat.Pa] = new CharacteristicConsumable(_charac[(int)Statistic.EStat.Pa].Generate(true));
+    }
+
+    /// <summary>
+    /// Retoune la liste des couts avec un cout par ligne
+    /// </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        string txt = "";
+
+
+
+        return txt;
+    }
+
+    public Rand Charac(Statistic.EStat pEStat)
+    {
+        return _charac[(int)pEStat];
     }
 }

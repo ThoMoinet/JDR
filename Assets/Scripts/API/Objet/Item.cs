@@ -1,34 +1,90 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour {
+public class Item : ILootable{
 
-    public string Nom;
-    public EGenre Genre;
+    public string Name;
+    public EGenreItem Gender;
+    public EQuality Quality;
+    public int Weight;
+    public bool Stackable; 
 
-    public Item (string pNom, EGenre pGenre)
+    public Item (string pName, EGenreItem pGender, EQuality pQuality, int pWeight)
     {
-        Nom = pNom;
-        Genre = pGenre;
+        Name = pName;
+        Gender = pGender;
+        Quality = pQuality;
+        Weight = pWeight;
+        Stackable = false;
     }
 
-    #region Unity Function
-
-    // Use this for initialization
-    void Start()
+    public Item(string pName, EQuality pQuality, int pWeight)
     {
-
+        Name = pName;
+        Quality = pQuality;
+        Weight = pWeight;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Item(Item pItem)
     {
-
+        Name = pItem.Name;
+        Gender = pItem.Gender;
+        Quality = pItem.Quality;
+        Weight = pItem.Weight;
     }
-    #endregion
 
-    public enum EGenre
+    public enum EGenreItem
     {
-        Arme1M, Arme2M, Conso, Tete, Torse, Main, Jambe, Pied, Bijoux
+        Standard, Consumable
+    }
+
+    public enum EQuality
+    {
+        Normal = 1, Anormal, Rare, Epique, Legendaire
+    }
+
+    public virtual Item JetLoot()
+    {
+        return this;
+    }
+
+    public static int GenerationQuality()
+    {
+        int quality = 1;
+        bool flag = false;
+
+        if (Random.Range(0F, 100F) <= 0.5F) // 0.5 % de chance de légendaire
+        {
+            quality = (int)Item.EQuality.Legendaire;
+            flag = true;
+        }
+
+        if (!flag)
+        {
+            if (Random.Range(0F, 100F) <= 1) // 1 % de chance de légendaire
+            {
+                quality = (int)Item.EQuality.Epique;
+                flag = true;
+            }
+
+            if (!flag)
+            {
+                if (Random.Range(0F, 100F) <= 2) // 2 % de chance de légendaire
+                {
+                    quality = (int)Item.EQuality.Rare;
+                    flag = true;
+                }
+
+                if (!flag)
+                {
+                    if (Random.Range(0F, 100F) <= 5) // 5 % de chance de légendaire
+                    {
+                        quality = (int)Item.EQuality.Anormal;
+                    }
+                }
+            }
+        }
+
+        return quality;
     }
 }

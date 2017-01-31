@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Aleatoire
 {
@@ -11,14 +10,22 @@ public class Aleatoire
         _max = pMax;
     }
 
-    public int LanceInt()
+    public Aleatoire(Aleatoire aleat)
     {
-        return Random.Range((int)_min, (int)_max);
+        _min = aleat._min;
+        _max = aleat._max;
     }
 
-    public float LanceFloat()
+    public float Generate(bool round)
     {
-        return Random.Range(_min, _max);
+        float r = Random.Range(_min, _max);
+
+        if (round)
+        {
+            r = Mathf.Round(r);
+        }
+
+        return r;
     }
 }
 

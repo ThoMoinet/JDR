@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,14 +67,14 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -87,21 +84,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\API\Caracteristique\Aleatoire.cs" />
-    <Compile Include="Assets\Scripts\API\Caracteristique\Carac.cs" />
-    <Compile Include="Assets\Scripts\API\Caracteristique\CaracConso.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\Characteristic.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\CharacteristicConsumable.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\IntBuilder.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\Rand.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\RandomBuilder.cs" />
+    <Compile Include="Assets\Scripts\API\Caracteristique\Statistic.cs" />
     <Compile Include="Assets\Scripts\API\Competence\Competence.cs" />
     <Compile Include="Assets\Scripts\API\Competence\Sort.cs" />
-    <Compile Include="Assets\Scripts\API\Objet\Arme.cs" />
-    <Compile Include="Assets\Scripts\API\Objet\Conso.cs" />
-    <Compile Include="Assets\Scripts\API\Objet\Equipement.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Consumable.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Equipment.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\ILootable.cs" />
     <Compile Include="Assets\Scripts\API\Objet\Item.cs" />
-    <Compile Include="Assets\Scripts\API\Perso\Classe.cs" />
-    <Compile Include="Assets\Scripts\API\Perso\PersonnageScript.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Loot.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Pattern\PatternEquipement.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Pattern\PatternWeapon.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Pattern\PatternWeaponBuilder.cs" />
+    <Compile Include="Assets\Scripts\API\Objet\Weapon.cs" />
+    <Compile Include="Assets\Scripts\API\Perso\Character.cs" />
+    <Compile Include="Assets\Scripts\API\Perso\Job.cs" />
+    <Compile Include="Assets\Scripts\API\Perso\Npc.cs" />
     <Compile Include="Assets\Scripts\API\Perso\Race.cs" />
     <Compile Include="Assets\Scripts\UI\Button\LoadScene.cs" />
     <Compile Include="Assets\Scripts\UI\Button\QuitGame.cs" />
     <Compile Include="Assets\Scripts\UI\CasePlateau.cs" />
+    <Compile Include="Assets\Scripts\UI\DisplayInformation.cs" />
     <Compile Include="Assets\Scripts\UI\Global.cs" />
     <Compile Include="Assets\Scripts\UI\PlateauManager.cs" />
     <Compile Include="Assets\Scripts\UI\ProgressBar.cs" />

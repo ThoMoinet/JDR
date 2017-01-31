@@ -60,13 +60,14 @@ public class ProgressBar : MonoBehaviour
                 _currentValue = newValue;
             }
 
+            //Re-définition de la taille de la barre
             newSize = _size * (_currentValue / _maxValue);
 
             _rectTransformBar.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, newSize);
         }
         else
         {
-            Debug.LogError("");
+            Debug.LogError("ProgressBar is not initialized. 'ChangeValue' not performed");
         }
     }
 }
